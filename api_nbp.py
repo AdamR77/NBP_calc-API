@@ -6,7 +6,6 @@ url = 'http://api.nbp.pl/api/exchangerates/tables/A/'
 table = requests.get(url)
 response = table.json()
 
-
 def header():
     system('cls')
     print('*' *26)
