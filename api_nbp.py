@@ -8,7 +8,7 @@ response = table.json()
 
 
 def header():
-    system('clear')
+    system('cls')
     print('*' *26)
     print('***  kalkulator walut  ***')
     print('*' *26, '\n')
@@ -49,25 +49,34 @@ for rate in response[0]['rates']:
 print(f' \n jak chcesz przeliczyć? \n 1. PLN => {currency_code}') 
 print(f' 2. {currency_code} => PLN ')  
 
-while True:
-    try:
-        choice = int(input('Twój wybór: '))
-    except:
-        print('Musisz wybrać opcje <1> lub <2>')
-    else:
-        break
+def choice_input():
+    while True:
+        try:
+            choice = int(input('Twój wybór: '))
+        except:
+            print('Musisz wybrać opcje <1> lub <2>')
+        else:
+            return choice
 
 while True:
+    choice = choice_input()
     if choice == 1:
-        quote = float(input(f'Podaj kwote (PLN) do przeliczenia na ({currency_code}): '))
+        try:
+            quote = float(input(f'Podaj kwote (PLN) do przeliczenia na ({currency_code}): '))
+        except:
+            print('musisz podać kwotę {liczbę}')
         result = quote / price_mid
         print(f'Po przeliczeniu: {result:.2f} {currency_code}')
         break
     if choice == 2:
-        quote = float(input(f'Podaj kwote ({currency_code} do przeliczenia na (PLN) ): '))
+        try:
+            quote = float(input(f'Podaj kwote ({currency_code} do przeliczenia na (PLN) ): '))
+        except:
+            print('musisz podać kwotę {liczbę}')
         result = quote * price_mid
         print(f'Po przeliczeniu: {result:.2f} PLN')
         break
+
 
 
     
